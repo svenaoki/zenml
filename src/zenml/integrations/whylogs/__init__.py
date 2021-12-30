@@ -11,16 +11,22 @@
 #  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
 #  or implied. See the License for the specific language governing
 #  permissions and limitations under the License.
+from zenml.integrations.constants import WHYLOGS
+from zenml.integrations.integration import Integration
 
-AIRFLOW = "airflow"
-GCP = "gcp"
-PYTORCH = "pytorch"
-PYTORCH_L = "pytorch_lightning"
-SKLEARN = "sklearn"
-TENSORFLOW = "tensorflow"
-PLOTLY = "plotly"
-FACETS = "facets"
-KUBEFLOW = "kubeflow"
-GRAPHVIZ = "graphviz"
-DASH = "dash"
-WHYLOGS = "whylogs"
+
+class WhylogsIntegration(Integration):
+    """Definition of [whylogs](https://github.com/whylabs/whylogs)
+    integration for ZenML."""
+
+    NAME = WHYLOGS
+    REQUIREMENTS = ["whylogs"]
+
+    @classmethod
+    def activate(cls) -> None:
+        """Activates the integration."""
+        from zenml.integrations.whylogs import visualizers  # noqa
+        from zenml.integrations.whylogs import materializers  # noqa
+
+
+WhylogsIntegration.check_installation()

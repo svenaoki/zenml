@@ -11,16 +11,6 @@
 #  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
 #  or implied. See the License for the specific language governing
 #  permissions and limitations under the License.
-
-AIRFLOW = "airflow"
-GCP = "gcp"
-PYTORCH = "pytorch"
-PYTORCH_L = "pytorch_lightning"
-SKLEARN = "sklearn"
-TENSORFLOW = "tensorflow"
-PLOTLY = "plotly"
-FACETS = "facets"
-KUBEFLOW = "kubeflow"
-GRAPHVIZ = "graphviz"
-DASH = "dash"
-WHYLOGS = "whylogs"
+from zenml.integrations.whylogs.materializers.whylogs_materializer import (   # noqa
+    WhylogsMaterializer,
+)
